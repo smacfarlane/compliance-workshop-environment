@@ -4,8 +4,8 @@ module Carpenter
       deck_colors(tfstate).each do |color|
         puts "# #{color} deck\n\n"
 
-        puts '| Hearts | IP Address |   | Spades | IP Address |   | Diamonds | IP Address |   | Clubs | IP Address |'
-        puts '| ------ | ---------- | - | ------ | ---------- | - | -------- | ---------- | - | ----- | ---------- |'
+        puts '| Hearts |   IP Address   |   | Spades |   IP Address   |   | Diamonds |   IP Address   |   | Clubs |   IP Address   |'
+        puts '| ------ |   ----------   | - | ------ |   ----------   | - | -------- |   ----------   | - | ----- |   ----------   |'
 
         %w(02 03 04 05 06 07 08 09 10 jack queen king ace).each do |val|
           row = []

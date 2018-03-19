@@ -39,6 +39,10 @@ module Carpenter
       Hashie::Mash.new(JSON.load(File.read(state_file(env_name))))
     end
 
+    def self.requires_automate?
+      File.exist?(File.join(terraform_dir, 'automate.tf'))
+    end
+
     def self.has_license?
       File.exist?(File.join(terraform_dir, 'delivery.license'))
     end
@@ -46,7 +50,8 @@ module Carpenter
     private
 
     def self.state_dir
-      File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'state'))
+      File.expand_path(File.join(Dir.getwd, 'state'))
+      #File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'state'))
     end
 
     def self.state_file(env_name)
@@ -54,7 +59,8 @@ module Carpenter
     end
 
     def self.terraform_dir
-      File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'terraform'))
+      File.expand_path(File.join(Dir.getwd, 'terraform'))
+      # File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'terraform'))
     end
 
     def self.env_from_config(config)

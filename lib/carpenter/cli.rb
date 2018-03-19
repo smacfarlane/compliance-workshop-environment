@@ -11,7 +11,7 @@ module Carpenter
       cli = HighLine.new
 
       validate_terraform_install!(cli)
-      validate_delivery_license!(cli)
+      validate_delivery_license!(cli) if Carpenter::Terraform.requires_automate?
 
       unless Carpenter::State.load(env_name).empty?
         say_error(cli, "environment #{env_name} already exists.")
@@ -160,6 +160,8 @@ module Carpenter
 
     desc 'markdown ENV_NAME', 'display the workstations for environment ENV_NAME in markdown format, useful for creating a gist'
     def markdown(env_name)
+      cli = HighLine.new 
+
       state = Carpenter::State.load(env_name)
       if state.empty?
         say_error(cli, "No state found for an environment named #{env_name}")

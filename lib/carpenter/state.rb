@@ -25,7 +25,8 @@ module Carpenter
     end
 
     def self.state_dir
-      File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'state'))
+      File.expand_path(File.join(Dir.getwd, 'state'))
+      #File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'state'))
     end
 
     def self.state_file(env_name)

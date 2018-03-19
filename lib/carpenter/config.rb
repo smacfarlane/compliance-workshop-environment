@@ -2,8 +2,8 @@ require 'tomlrb'
 
 module Carpenter
   class Config
-    CONFIG_FILE = File.join(File.expand_path(File.dirname(__FILE__)), '..', '..', 'carpenter.toml')
-
+    # CONFIG_FILE = File.join(File.expand_path(File.dirname(__FILE__)), '..', '..', 'carpenter.toml')
+    CONFIG_FILE = File.expand_path(File.join(Dir.getwd, 'carpenter.toml'))
     attr_reader :config
 
     def initialize
